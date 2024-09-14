@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lossless Compression App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lossless Compression App</h1>
+
+        <!-- Form for Excel-filkomprimering -->
+        <h2>Komprimer Excel-fil</h2>
+        <form action="/compress_file" method="POST" enctype="multipart/form-data">
+            <label for="file_excel">Velg Excel-fil:</label>
+            <input type="file" id="file_excel" name="file" accept=".xlsx, .xls" required><br><br>
+
+            <label for="method_excel">Velg komprimeringsmetode:</label>
+            <select id="method_excel" name="method">
+                <option value="RLE">Run-Length Encoding (RLE)</option>
+                <option value="Huffman">Huffman Coding</option>
+                <option value="Arithmetic">Arithmetic Coding</option>
+                <option value="Cabac">CABAC Coding</option>
+            </select><br><br>
+
+            <button type="submit">Komprimer Excel</button>
+        </form>
+
+        <!-- Form for bildekomprimering -->
+        <h2>Komprimer Bilde</h2>
+        <form action="/compress_image" method="POST" enctype="multipart/form-data">
+            <label for="file_image">Velg bildefil:</label>
+            <input type="file" id="file_image" name="file" accept="image/*" required><br><br>
+
+            <label for="method_image">Velg komprimeringsmetode:</label>
+            <select id="method_image" name="method">
+                <option value="RLE">Run-Length Encoding (RLE)</option>
+                <option value="Huffman">Huffman Coding</option>
+                <option value="Arithmetic">Arithmetic Coding</option>
+                <option value="Cabac">CABAC Coding</option>
+            </select><br><br>
+
+            <button type="submit">Komprimer Bilde</button>
+        </form>
+    </div>
+</body>
+</html>

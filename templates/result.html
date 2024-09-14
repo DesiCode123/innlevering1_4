@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Komprimeringsresultat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 70%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0px 0px 10px #aaa;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .result-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        .result-table th, .result-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .chart {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Komprimeringsresultat</h1>
+
+        <table class="result-table">
+            <tr>
+                <th>Metode</th>
+                <td>{{ method }}</td>
+            </tr>
+            <tr>
+                <th>Original størrelse</th>
+                <td>{{ original_size }} bits</td>
+            </tr>
+            <tr>
+                <th>Komprimert størrelse</th>
+                <td>{{ compressed_size }} bits</td>
+            </tr>
+            <tr>
+                <th>Komprimeringsgrad</th>
+                <td>{{ compression_ratio }}%</td>
+            </tr>
+            <tr>
+                <th>Kodingstid</th>
+                <td>{{ encoding_time }} sekunder</td>
+            </tr>
+        </table>
+
+        {% if show_tree %}
+        <div class="chart">
+            <h2>Huffman-tre</h2>
+            <img src="{{ url_for('static', filename='huffman_tree.png') }}" alt="Huffman-tre">
+        </div>
+        {% endif %}
+
+        {% if show_comparison_chart %}
+        <div class="chart">
+            <h2>Komprimeringssammenligning</h2>
+            <img src="{{ url_for('static', filename='compression_comparison.png') }}" alt="Komprimeringssammenligning">
+        </div>
+        {% endif %}
+
+        <a href="/" class="back-link">Tilbake til hovedsiden</a>
+    </div>
+</body>
+</html>
